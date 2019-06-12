@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Console</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="col1">
+    <div class="row">
+
+
+            <form id="create-form" action="/create" method="post" class="form-inline">
+                <div class="form-group">
+                    <div class="form-frame">
+                        <label for="vehicleId">Vehicle Name:</label> <input id="vehicleId1" type="text" name="vehicleId">
+                        <label for="startLatitude">Start Latitude:</label> <input id="startLatitude" type="text" name="startLatitude">
+                        <label for="startLongitude">Start Longitude:</label> <input id="startLongitude" type="text" name="startLongitude">
+                        <input id="create" type="submit" value="Create">
+                        <input type="reset" value="reset" >
+                    </div>
+                </div>
+            </form>
+
+    </div>
+    <div class="row">
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="form-frame" >
+                    <label for="vehicleId">Vehicles:</label>
+                    <select id="vehicleId" name="vehicleId" >
+                        <!--<option th:each="vehicle : ${@mainController.getVehicles()}" th:value="${vehicle}" th:text="${vehicle}"></option>-->
+                    </select>
+                    <label for="speed">Speed:</label> <input id="speed" type="text" name="speed" >
+                    <label for="direction">Direction(degree):</label> <input id="direction" type="text" name="direction" alt="Angle to horizon in degree unit">
+                    <label for="period">Period:</label> <input id="period" type="text" name="period">
+                        <button id="move" class="btn btn-default" type="submit">Start Moving</button>
+                    </div>
+                </div>
+
+            </form>
+
+    </div>
+    <div class="row">
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+    </div>
+    </div>
+    <div class="col2">
+        <div class="row">
+            <div id="frames" class="framesdiv" ></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

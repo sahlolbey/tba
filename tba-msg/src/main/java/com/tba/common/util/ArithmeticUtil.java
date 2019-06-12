@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public class ArithmeticUtil {
     private static final Logger logger = LoggerFactory.getLogger(ArithmeticUtil.class);
     /**
-     * This method calculates the current horizontal coordinate of object using given parmaneters.
+     * This method calculates the current horizontal coordinate  of object using given parameters.
      * this is assumed that the surface where the object moves is flat.
      * @param initialX the initial horizontal coordinate of object in meters unit
      * @param speed in KH unit
@@ -30,7 +30,7 @@ public class ArithmeticUtil {
     }
 
     /**
-     * This method calculates the current horizontal coordinate of object using given parameters.
+     * This method calculates the current vertical coordinate  of object using given parameters.
      * this is assumed that the surface where the object moves is flat.
      * @param initialY the initial vertical coordinate of object in meters unit
      * @param speed in KH unit
@@ -53,6 +53,14 @@ public class ArithmeticUtil {
         initialY=initialY+(sign)*y;
         return initialY;
     }
+    /**
+     * This method calculates the current horizontal coordinate  of object using given parameters.
+     * this is assumed that the surface where the object moves is flat.
+     * @param speed in KH unit
+     * @param slopeCoefficient: a ceofficient between X and Y
+     * @param timePeriod :time period in seconds
+     * @return
+     */
     private static double calculateXdifference(double speed,double slopeCoefficient,int timePeriod){
         // the distance that the vehicle moved in meters
         double distanceMoved = (speed/3600)*timePeriod*1000;

@@ -19,43 +19,11 @@ import javax.jms.ConnectionFactory;
 
 @SpringBootApplication
 @EnableJms
-
-
 public class VehicleManagerApplication {
 
-	/*public static void main(String[] args) {
-		SpringApplication.run(TbaArtemis1Application.class, args);
-	}*/
-/*
-	@Bean
-	public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
-													DefaultJmsListenerContainerFactoryConfigurer configurer) {
-		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-		// This provides all boot's default to this factory, including the message converter
-		configurer.configure(factory, connectionFactory);
-		// You could still override some of Boot's default if necessary.
-		return factory;
-	}
-*/
-
-/*
-	@Bean // Serialize message content to json using TextMessage
-	public MessageConverter jacksonJmsMessageConverter() {
-		MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-		converter.setTargetType(MessageType.TEXT);
-		converter.setTypeIdPropertyName("_type");
-		return converter;
-	}
-*/
 
 	public static void main(String[] args) {
 		// Launch the application
 		ConfigurableApplicationContext context = SpringApplication.run(VehicleManagerApplication.class, args);
-
-
-
-		// Send a message with a POJO - the template reuse the message converter
-		/*System.out.println("Sending an email message.");*/
-		/*jmsTemplate.convertAndSend("mailbox", new Email("info@example.com", "Hello"));*/
 	}
 }

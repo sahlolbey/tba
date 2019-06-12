@@ -7,12 +7,15 @@ import com.tba.common.util.ArithmeticUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jms.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import javax.jms.JMSException;
+import javax.jms.MapMessage;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The use to simulate vehicle. It has and inner class name Engine which is actually a thread to simulate movement when
+ * requested.
+ */
 public class Vehicle {
     private static final Logger logger = LoggerFactory.getLogger(Vehicle.class);
     private String vehicleId;
@@ -42,6 +45,7 @@ public class Vehicle {
                 return;
             }
             if (((MapMessage) message).getString(MessageMap.MSG_TYPE).equals(MessageMap.MSG_MOVE)) {
+                // instantiate a new engine and ask it to move the vehicle
                 engine = new Engine();
                 engine.start();
             }
@@ -55,6 +59,10 @@ public class Vehicle {
             return false;
         return true;
     }
+
+    /**
+     * This class is instantiated when the vehicle move requested by user.
+     */
     class Engine extends Thread {
         @Override
         public void run() {
@@ -80,7 +88,7 @@ public class Vehicle {
             }
             status = "stop";
             sendLocation();
-            logger.debug("vehicle stoped!");
+            logger.debug("vehicle stopped!");
 
         }
     }

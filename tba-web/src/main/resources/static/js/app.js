@@ -145,6 +145,8 @@ $(function () {
     $( "#move" ).click(function() { move(); });
     $( "#create" ).click(function() { create();});
 
+    connect();
+
 });
 
 

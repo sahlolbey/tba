@@ -8,20 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.jms.*;
+import javax.jms.JMSException;
+import javax.jms.MapMessage;
+import javax.jms.Message;
+import javax.jms.MessageListener;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * This class is a manager for Vehicle Simulation component and it listens for message coming from
+ * Terminal Web Application and follow the user commands
+ */
 @Component
 public class VehicleManagerListener implements MessageListener {
     private static final Logger logger = LoggerFactory.getLogger(VehicleManagerListener.class);
     @Autowired
-    private AtomicInteger count = null;
-    @Autowired
     MessageTransmitter messageTransmitter;
     private Map<String, Vehicle> vehicles;
-
+    //the time interval that the vehicle location is sent to server.
     public static Integer LOCATION_REFRESH_INTERVAL;
     @Value("${vehicle.location.refereshInterval:2}")
     public void setLocationRefreshInterval(Integer locationRefreshInterval) {
@@ -35,7 +39,9 @@ public class VehicleManagerListener implements MessageListener {
             vehicles = new ConcurrentHashMap<>();
         if (message instanceof MapMessage) {
             try {
+                //what is the command
                 String messageType = ((MapMessage) message).getString(MessageMap.MSG_TYPE);
+                // execute the command specific part of code
                 if (messageType.equals(MessageMap.MSG_CREATE)) {
                     logger.debug("messageType="+messageType);
                     String vehicleId=((MapMessage) message).

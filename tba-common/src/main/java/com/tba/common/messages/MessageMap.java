@@ -2,6 +2,10 @@ package com.tba.common.messages;
 
 import java.util.HashMap;
 
+/**
+ * This class is used as message container
+ * and also defines constants to make the code more readable
+ */
 public class MessageMap extends HashMap {
     public static final String MSG_TYPE="msgType";
     public static final String MSG_CREATE="create";

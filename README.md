@@ -1,7 +1,7 @@
 # TBA Case for Interview Project
 
 #Project Structure
-From coding and implementation perspective the project is divided to three modules.
+ From coding and implementation perspective the project is divided to three modules.
 
    - tba-msg directory is contained with the code of "Vehicle Simulation" component of the system as defined in technical 
     design document at  [docs/technical-design.docx](docs/technical-design.docx)

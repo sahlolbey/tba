@@ -1,12 +1,17 @@
 package com.tba.common.messages;
 
+/**
+ * This a Factory class for creation of different messages communicated between component of system
+ */
+
+
 public class MessageFactory{
     /**
-     * This method creates a message to be sent to server to notify the vehicle for movement
-     * @param vehicleId
+     * This method creates a message to be sent to Vehicle Simulation server to notify the vehicle for movement
+     * @param vehicleId :Name of Vehicle
      * @param speedKH : speed of vehicle in kilommeter per hour unit
      * @param period : period of movement in seconds
-     * @param direction
+     * @param direction: direction of movement. It's an angle in degree unit and angle is to horizontal axis
      * @return
      */
     public static MessageMap createMovementMessage(String vehicleId, Double speedKH, Integer period, Double direction
@@ -20,6 +25,14 @@ public class MessageFactory{
 
         return messageMap;
     }
+
+    /**
+     * This method creates a message to be sent to Vehicle Simulation server to instantiate a new vehicle
+     * @param vehicleId::Name of Vehicle
+     * @param latitude: initial Y-coordinate of vehicle
+     * @param longitude: initial X-coordinate of vehicle
+     * @return
+     */
     public static MessageMap createVehicleCreateMessage(String vehicleId,double latitude,double longitude){
         MessageMap messageMap = new MessageMap();
         messageMap.put(MessageMap.MSG_TYPE, MessageMap.MSG_CREATE);
@@ -29,14 +42,14 @@ public class MessageFactory{
         return messageMap;
     }
     /**
-     * Creates  a location message to be sent  to user
-     * @param vehicleId
-     * @param latitude
-     * @param longitude
-     * @param speed
-     * @param direction
-     * @param status
-     * @param timeStamp
+     * Creates  a location message to be sent  to Terminal Web Application
+     * @param vehicleId: name of vehicle
+     * @param latitude: Y-coordinate of vehicle
+     * @param longitude: X-coordinate of vehicle
+     * @param speed: speed of vehicle in KH unit.
+     * @param direction: direction of movement. It's an angle in degree unit and angle is to horizontal axis
+     * @param status: current status of vehicle moving on stoped.
+     * @param timeStamp: the date and time sampled location
      * @return
      */
     public static MessageMap createLocationMessage(String vehicleId,

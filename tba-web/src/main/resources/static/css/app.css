@@ -37,3 +37,6 @@ label{
 button:hover {
     opacity: .6;
 }
+h3{
+    margin: 0;
+}

@@ -1,3 +1,16 @@
+# TBA Case for Interview Project
+
+#Project Structure
+From coding and implementation perspective the project is divided to three modules.
+
+   - tba-msg directory is contained with the code of "Vehicle Simulation" component of the system as defined in technical 
+    design document at  [docs/technical-design.docx](docs/technical-design.docx)
+    
+   - tba-web directory is contained with the code of "Terminal Web Application" component of the system as defined in technical 
+     design document at  [docs/technical-design.docx](docs/technical-design.docx)
+   - tba-common directory is contained withe code the both tba-msg module and tba-web is dependent on.
+   - docs directory is documents directory for the project.    
+
 # TBA Case Installation Guide
 In this document we assume that you already downloaded and  installed
 the lasted JDK from Oracle web site. The JDK version should be at least 1.8.

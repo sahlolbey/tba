@@ -30,5 +30,4 @@
         <jms:listener destination="jms/ManagerQueue" ref="vehicleManagerListener" />
     </jms:listener-container>
 
-    <bean id="counter" class="java.util.concurrent.atomic.AtomicInteger"/>
 </beans>

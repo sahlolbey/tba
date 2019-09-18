@@ -14,16 +14,21 @@ Optional:
 
 In this project vehicle is simulated by a system process and there will be an asynchronous messaging  system for communication between different parts of system. 
 
-Technical Design
+# 3)Technical Design
 
 As we can understand from system definition it is a simulation, monitoring and controller of robotic vehicles. In this section we will define the system component their responsibilities and how they interact.
 
+![System Block Diagram](link-to-image)
+# 3.1) Terminal Web Application
 This is a web application responsible for interacting with user and sending user commands to "Vehicle Simulation" component. The communication between "Terminal Web Application" and "Vehicle Simulation" is via asynchronous messaging through ActiveMQ message broker.
 This component receives the locations of moving vehicles through asynchronous messaging and sends them to web browser through websocket technology in real time.
 
+# 3.2) Vehicle Simulation
+This component is responsible for managing  simulated vehicles. Its interaction with Terminal Web Application is through messaging and it simulates vehicle movement.
+When the component receives create command it creates a vehicle and store it in memory. No persistent is implemented in this version as not requested in project definition.
+When the component receives move command it finds the requested vehicle and ask it to move. The vehicle create a new thread and simulate the movement  by calculating new locations. The calculated locations is sent to Terminal Web Application through asynchronous messaging each two seconds.
 
 
-![System Block Diagram](link-to-image)
 
 # Project Structure
  

@@ -1,9 +1,31 @@
-#Preface 
-This a demo project to present my skills in distributed system development using Sprin Boot, Active MQ Messaging server, WebSockets, Design Patterns.
+# 1)Preface 
+This a demo project to present my skills in distributed system development using Springboot, Active MQ Messaging server, WebSockets, Design Patterns.
 
-#Project Definition
+# 2)Project Definition
+a. The system has a user interface Web UI that enables the user to instantiate vehicles and tell them to move. 
+•	The vehicle movement is commanded by user. 
+•	The user send message to vehicle containing direction of movement, distance and speed.
+•	Direction of movement is an angle to current movement direction.
+•	User can send movement message to vehicles when they completed last movement.
+subsequent movement command to a vehicle when it hasn't completed its last movement will be ignored.
+•	The vehicle sends its current location to server.
+•	We do not need to follow the laws of nature and the vehicles do not need to interact with each other. Simply identifying a collision and then moving over each other in the simulation is not a problem. So for the sake of the case, We can assume the vehicles will stop themselves if they are too close to each other.
+Optional:
 
-#Project Structure
+In this project vehicle is simulated by a system process and there will be an asynchronous messaging  system for communication between different parts of system. 
+
+Technical Design
+
+As we can understand from system definition it is a simulation, monitoring and controller of robotic vehicles. In this section we will define the system component their responsibilities and how they interact.
+
+This is a web application responsible for interacting with user and sending user commands to "Vehicle Simulation" component. The communication between "Terminal Web Application" and "Vehicle Simulation" is via asynchronous messaging through ActiveMQ message broker.
+This component receives the locations of moving vehicles through asynchronous messaging and sends them to web browser through websocket technology in real time.
+
+
+
+![System Block Diagram](link-to-image)
+
+# Project Structure
  
  From coding and implementation perspective the project is divided to three modules.
 

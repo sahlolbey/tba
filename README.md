@@ -18,7 +18,7 @@ In this project vehicle is simulated by a system process and there will be an as
 
 As we can understand from system definition it is a simulation, monitoring and controller of robotic vehicles. In this section we will define the system component their responsibilities and how they interact.
 
-![System Block Diagram](link-to-image)
+![System Block Diagram](docs/block-diagram.png)
 # 3.1) Terminal Web Application
 This is a web application responsible for interacting with user and sending user commands to "Vehicle Simulation" component. The communication between "Terminal Web Application" and "Vehicle Simulation" is via asynchronous messaging through ActiveMQ message broker.
 This component receives the locations of moving vehicles through asynchronous messaging and sends them to web browser through websocket technology in real time.
@@ -30,7 +30,7 @@ When the component receives move command it finds the requested vehicle and ask 
 
 
 
-# Project Structure
+# 4)Project Structure
  
  From coding and implementation perspective the project is divided to three modules.
 
@@ -42,7 +42,7 @@ When the component receives move command it finds the requested vehicle and ask 
    - tba-common directory is contained withe code the both tba-msg module and tba-web is dependent on.
    - docs directory is documents directory for the project.    
 
-# TBA Case Installation Guide
+# 5) Installation Guide
 In this document we assume that you already downloaded and  installed
 the lasted JDK from Oracle web site. The JDK version should be at least 1.8.
 

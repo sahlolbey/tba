@@ -1,4 +1,7 @@
-# TBA Case for Interview Project
+#Preface 
+This a demo project to present my skills in distributed system development using Sprin Boot, Active MQ Messaging server, WebSockets, Design Patterns.
+
+#Project Definition
 
 #Project Structure
  
